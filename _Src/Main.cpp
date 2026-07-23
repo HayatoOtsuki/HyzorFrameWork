@@ -7,6 +7,8 @@
  -----------------------------------------------------------------------------
 
  ===========================================================================**/
+#include <d3d12.h>
+
 #include "WindowApp.h"
 #include "GraphicsDevice.h"
 #include "CommandContext.h"
@@ -48,7 +50,68 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
     // メインループ：閉じられるまで回り続ける
 	// ========================
     while (app.ProcessMessage()) {
-        // ここに後で「描画処理」を書いていく
+		// ========================
+		// 今から描くバッファの番号
+		// ========================
+		const uint32_t index = swapChain.GetCurrentBackBufferIndex();
+
+		// ========================
+		// コマンドリストの記録開始
+		// ========================
+		commandContext.Begin();
+		ID3D12GraphicsCommandList* list = commandContext.GetCommandList();
+
+		// ========================
+		// バリア：PRESENT -> RENDER_TARGET
+		// ========================
+		D3D12_RESOURCE_BARRIER barrier {};
+		barrier.Type = D3D12_RESOURCE_BARRIER_TYPE_TRANSITION; // バリア
+		barrier.Flags = D3D12_RESOURCE_BARRIER_FLAG_NONE; // フラグなし
+		barrier.Transition.pResource = swapChain.GetBackBuffer(index); // バリアを適用するリソース
+		barrier.Transition.Subresource = D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES; // 全サブリソースに適用
+		barrier.Transition.StateBefore = D3D12_RESOURCE_STATE_PRESENT; // 以前の状態
+		barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_RENDER_TARGET; // これからの状態
+		list->ResourceBarrier(1, &barrier); // バリアをコマンド
+
+		// ========================
+		// RTVの設定
+		// ========================
+		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = renderTarget.GetRtvHandle(index);
+		list->OMSetRenderTargets(1, &rtvHandle, FALSE, nullptr);
+
+		// ========================
+		// 画面クリア
+		// ========================
+		const float CLEAR_COLOR[4] = {0.2f, 0.2f, 0.2f, 1.0f};
+		list->ClearRenderTargetView(rtvHandle, CLEAR_COLOR, 0, nullptr);
+
+		// ========================
+		// バリア：RENDER_TARGET -> PRESENT
+		// ========================
+		barrier.Transition.StateBefore = D3D12_RESOURCE_STATE_RENDER_TARGET; // 以前の状態
+		barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_PRESENT; // これからの状態
+		list->ResourceBarrier(1, &barrier); // バリアをコマンド
+
+		// ========================
+		// 記録終了
+		// ========================
+		commandContext.End();
+
+		// ========================
+		// 実行
+		// ========================
+		commandContext.Execute();
+		
+		// ========================
+		// 表示
+		// ========================
+		swapChain.Present();
+
+		// ========================
+		// GPUの完了を待つ
+		// ========================
+		fence.Signal(commandContext.GetQueue());
+		fence.Wait();
     }
 
     return 0;
