@@ -9,17 +9,6 @@
  ===========================================================================**/
 #include "WindowApp.h"
 
-WindowApp::WindowApp() {
-	// コンストラクタの処理
-}
-
-WindowApp::~WindowApp() {
-	// 登録したウィンドウクラスを後始末する（省略してもよいが、リソースリークを避けるために行う）
-	if (m_hInstance != nullptr) {
-		UnregisterClassW(WINDOW_CLASS_NAME, m_hInstance);
-	}
-}
-
 bool WindowApp::Initialize(uint32_t width, uint32_t height, const wchar_t* title) {
 	m_width = width;
 	m_height = height;

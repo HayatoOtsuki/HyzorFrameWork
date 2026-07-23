@@ -8,6 +8,7 @@
 
  ===========================================================================**/
 #include "WindowApp.h"
+#include "GraphicsDevice.h"
 
 // ウィンドウ設定
 namespace {
@@ -19,10 +20,12 @@ namespace {
 // SubSystem=Windows なのでエントリはwWinMain（Unicode版）
 int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
 	WindowApp app; // ウィンドウアプリケーションのインスタンスを生成する
+	GraphicsDevice graphics; // グラフィックスデバイスのインスタンスを生成する
 
-    if (!app.Initialize(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)) {
-        return -1;
-    }
+    // 初期化
+    if (!app.Initialize(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)) { return -1; }
+    if (!graphics.Initialize()) { return 1; }
+
 
     // メインループ：閉じられるまで回り続ける
     while (app.ProcessMessage()) {
