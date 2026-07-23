@@ -145,11 +145,13 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="_Src\CommandContext.cpp" />
     <ClCompile Include="_Src\GraphicsDevice.cpp" />
     <ClCompile Include="_Src\Main.cpp" />
     <ClCompile Include="_Src\WindowApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="_Include\CommandContext.h" />
     <ClInclude Include="_Include\GraphicsDevice.h" />
     <ClInclude Include="_Include\WindowApp.h" />
   </ItemGroup>
