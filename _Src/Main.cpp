@@ -12,6 +12,7 @@
 #include "CommandContext.h"
 #include "SwapChain.h"
 #include "RenderTarget.h"
+#include "Fence.h"
 
 // ウィンドウ設定
 namespace {
@@ -22,11 +23,15 @@ namespace {
 
 // SubSystem=Windows なのでエントリはwWinMain（Unicode版）
 int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
-	WindowApp app; // ウィンドウアプリケーションのインスタンスを生成する
-	GraphicsDevice graphics; // グラフィックスデバイスのインスタンスを生成する
-	CommandContext commandContext; // コマンドコンテキストのインスタンスを生成する
-	SwapChain swapChain; // スワップチェーンのインスタンスを生成する
-	RenderTarget renderTarget; // レンダーターゲットのインスタンスを生成する
+	// =========================
+	// インスタンス生成
+	// =========================
+	WindowApp app;
+	GraphicsDevice graphics;
+	CommandContext commandContext;
+	SwapChain swapChain;
+	RenderTarget renderTarget;
+	Fence fence;
 
 	// =========================
     // 初期化
@@ -37,6 +42,7 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
 	if (!swapChain.Initialize(graphics.GetFactory(), commandContext.GetQueue(),
 		app.GetHwnd(), app.GetWidth(), app.GetHeight())) { return -1; }
 	if (!renderTarget.Initialize(graphics.GetDevice(), &swapChain)) { return -1; }
+	if (!fence.Initialize(graphics.GetDevice())) { return -1; }
 
 	// ========================
     // メインループ：閉じられるまで回り続ける

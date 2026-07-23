@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="_Src\CommandContext.cpp" />
+    <ClCompile Include="_Src\Fence.cpp" />
     <ClCompile Include="_Src\GraphicsDevice.cpp" />
     <ClCompile Include="_Src\Main.cpp" />
     <ClCompile Include="_Src\RenderTarget.cpp" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_Include\CommandContext.h" />
+    <ClInclude Include="_Include\Fence.h" />
     <ClInclude Include="_Include\GraphicsDevice.h" />
     <ClInclude Include="_Include\RenderTarget.h" />
     <ClInclude Include="_Include\SwapChain.h" />
