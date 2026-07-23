@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Include">
+      <UniqueIdentifier>{9b480c88-764b-4fbe-b626-662c479498de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Src">
+      <UniqueIdentifier>{d74847e2-6221-4f7e-b56c-021848e32259}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="_Src\Main.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
+    <ClCompile Include="_Src\WindowApp.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_Include\WindowApp.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

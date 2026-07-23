@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="HyzorFrameWork.vcxproj" Id="8c247553-15aa-4025-9a97-2444073609b7" />
+</Solution>
