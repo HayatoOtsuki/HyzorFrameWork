@@ -11,6 +11,7 @@
 #include "GraphicsDevice.h"
 #include "CommandContext.h"
 #include "SwapChain.h"
+#include "RenderTarget.h"
 
 // ウィンドウ設定
 namespace {
@@ -25,15 +26,21 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
 	GraphicsDevice graphics; // グラフィックスデバイスのインスタンスを生成する
 	CommandContext commandContext; // コマンドコンテキストのインスタンスを生成する
 	SwapChain swapChain; // スワップチェーンのインスタンスを生成する
+	RenderTarget renderTarget; // レンダーターゲットのインスタンスを生成する
 
+	// =========================
     // 初期化
+	// =========================
     if (!app.Initialize(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)) { return -1; }
     if (!graphics.Initialize()) { return -1; }
 	if (!commandContext.Initialize(graphics.GetDevice())) { return -1; }
 	if (!swapChain.Initialize(graphics.GetFactory(), commandContext.GetQueue(),
 		app.GetHwnd(), app.GetWidth(), app.GetHeight())) { return -1; }
+	if (!renderTarget.Initialize(graphics.GetDevice(), &swapChain)) { return -1; }
 
+	// ========================
     // メインループ：閉じられるまで回り続ける
+	// ========================
     while (app.ProcessMessage()) {
         // ここに後で「描画処理」を書いていく
     }
