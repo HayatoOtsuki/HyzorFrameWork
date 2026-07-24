@@ -7,14 +7,17 @@
  -----------------------------------------------------------------------------
 
  ===========================================================================**/
-#include <d3d12.h>
-
 #include "WindowApp.h"
 #include "GraphicsDevice.h"
 #include "CommandContext.h"
 #include "SwapChain.h"
 #include "RenderTarget.h"
 #include "Fence.h"
+#include "Shader.h"
+#include "RootSignature.h"
+#include "PipelineState.h"
+
+#include <d3d12.h>
 
 // ウィンドウ設定
 namespace {
@@ -28,12 +31,17 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
 	// =========================
 	// インスタンス生成
 	// =========================
-	WindowApp app;
-	GraphicsDevice graphics;
-	CommandContext commandContext;
-	SwapChain swapChain;
-	RenderTarget renderTarget;
-	Fence fence;
+	WindowApp app {};
+	GraphicsDevice graphics {};
+	CommandContext commandContext {};
+	SwapChain swapChain {};
+	RenderTarget renderTarget {};
+	Fence fence {};
+	Shader vertexShader {};
+	Shader pixelShader {};
+	RootSignature rootSignature {};
+	PipelineState pipelineState {};
+
 
 	// =========================
     // 初期化
@@ -45,6 +53,10 @@ int WINAPI wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int) {
 		app.GetHwnd(), app.GetWidth(), app.GetHeight())) { return -1; }
 	if (!renderTarget.Initialize(graphics.GetDevice(), &swapChain)) { return -1; }
 	if (!fence.Initialize(graphics.GetDevice())) { return -1; }
+	if (!vertexShader.CompileFromFile(L"_Shader/Unlit.hlsl", L"VSMain", L"vs_6_0")) { return -1; }
+	if (!pixelShader.CompileFromFile(L"_Shader/Unlit.hlsl", L"PSMain", L"ps_6_0")) { return -1; }
+	if (!rootSignature.Initialize(graphics.GetDevice())) { return -1; }
+	if (!pipelineState.Initialize(graphics.GetDevice(), &rootSignature, vertexShader, pixelShader)) { return -1; }
 
 	// ========================
     // メインループ：閉じられるまで回り続ける

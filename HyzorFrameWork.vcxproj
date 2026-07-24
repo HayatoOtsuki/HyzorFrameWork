@@ -123,6 +123,9 @@
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
+    <PostBuildEvent>
+      <Command>xcopy /Y /D "C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\dxcompiler.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -143,13 +146,19 @@
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
+    <PostBuildEvent>
+      <Command>xcopy /Y /D "C:\Program Files (x86)\Windows Kits\10\bin\10.0.26100.0\x64\dxcompiler.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="_Src\CommandContext.cpp" />
     <ClCompile Include="_Src\Fence.cpp" />
     <ClCompile Include="_Src\GraphicsDevice.cpp" />
     <ClCompile Include="_Src\Main.cpp" />
+    <ClCompile Include="_Src\PipelineState.cpp" />
     <ClCompile Include="_Src\RenderTarget.cpp" />
+    <ClCompile Include="_Src\RootSignature.cpp" />
+    <ClCompile Include="_Src\Shader.cpp" />
     <ClCompile Include="_Src\SwapChain.cpp" />
     <ClCompile Include="_Src\WindowApp.cpp" />
   </ItemGroup>
@@ -157,9 +166,20 @@
     <ClInclude Include="_Include\CommandContext.h" />
     <ClInclude Include="_Include\Fence.h" />
     <ClInclude Include="_Include\GraphicsDevice.h" />
+    <ClInclude Include="_Include\PipelineState.h" />
     <ClInclude Include="_Include\RenderTarget.h" />
+    <ClInclude Include="_Include\RootSignature.h" />
+    <ClInclude Include="_Include\Shader.h" />
     <ClInclude Include="_Include\SwapChain.h" />
     <ClInclude Include="_Include\WindowApp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="_Shader\Common.hlsli">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="_Shader\Unlit.hlsl">
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
