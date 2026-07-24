@@ -7,6 +7,9 @@
     <Filter Include="_Src">
       <UniqueIdentifier>{d74847e2-6221-4f7e-b56c-021848e32259}</UniqueIdentifier>
     </Filter>
+    <Filter Include="_Shader">
+      <UniqueIdentifier>{2fafff42-f657-4b6e-adfd-02e52af8cbff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="_Src\Main.cpp">
@@ -15,10 +18,72 @@
     <ClCompile Include="_Src\WindowApp.cpp">
       <Filter>_Src</Filter>
     </ClCompile>
+    <ClCompile Include="_Src\CommandContext.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
+    <ClCompile Include="_Src\Fence.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
+    <ClCompile Include="_Src\GraphicsDevice.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
+    <ClCompile Include="_Src\RenderTarget.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
+    <ClCompile Include="_Src\SwapChain.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
+    <ClCompile Include="_Src\Shader.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
+    <ClCompile Include="_Src\RootSignature.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
+    <ClCompile Include="_Src\PipelineState.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
+    <ClCompile Include="_Src\VertexBuffer.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_Include\WindowApp.h">
       <Filter>_Include</Filter>
     </ClInclude>
+    <ClInclude Include="_Include\CommandContext.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="_Include\Fence.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="_Include\GraphicsDevice.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="_Include\RenderTarget.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="_Include\SwapChain.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="_Include\Shader.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="_Include\RootSignature.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="_Include\PipelineState.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="_Include\VertexBuffer.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="_Shader\Common.hlsli">
+      <Filter>_Shader</Filter>
+    </None>
+    <None Include="_Shader\Unlit.hlsl">
+      <Filter>_Shader</Filter>
+    </None>
   </ItemGroup>
 </Project>
