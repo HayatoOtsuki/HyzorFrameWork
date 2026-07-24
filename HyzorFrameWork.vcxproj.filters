@@ -42,6 +42,9 @@
     <ClCompile Include="_Src\PipelineState.cpp">
       <Filter>_Src</Filter>
     </ClCompile>
+    <ClCompile Include="_Src\VertexBuffer.cpp">
+      <Filter>_Src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="_Include\WindowApp.h">
@@ -69,6 +72,9 @@
       <Filter>_Include</Filter>
     </ClInclude>
     <ClInclude Include="_Include\PipelineState.h">
+      <Filter>_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="_Include\VertexBuffer.h">
       <Filter>_Include</Filter>
     </ClInclude>
   </ItemGroup>

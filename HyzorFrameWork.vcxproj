@@ -160,6 +160,7 @@
     <ClCompile Include="_Src\RootSignature.cpp" />
     <ClCompile Include="_Src\Shader.cpp" />
     <ClCompile Include="_Src\SwapChain.cpp" />
+    <ClCompile Include="_Src\VertexBuffer.cpp" />
     <ClCompile Include="_Src\WindowApp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +172,7 @@
     <ClInclude Include="_Include\RootSignature.h" />
     <ClInclude Include="_Include\Shader.h" />
     <ClInclude Include="_Include\SwapChain.h" />
+    <ClInclude Include="_Include\VertexBuffer.h" />
     <ClInclude Include="_Include\WindowApp.h" />
   </ItemGroup>
   <ItemGroup>
